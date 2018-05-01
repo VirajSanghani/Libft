@@ -6,7 +6,7 @@
 #    By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/16 16:46:43 by vsanghan          #+#    #+#              #
-#    Updated: 2018/04/30 16:29:58 by vsanghan         ###   ########.fr        #
+#    Updated: 2018/04/30 17:55:24 by vsanghan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,6 @@ SRCS =	ft_putchar.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		get_next_line.c \
 
 OBJS =	$(SRCS:.c=.o)
 
