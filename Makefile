@@ -10,11 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME = libft.a
-
-CC = cc
-CFLAGS = -ansi -pedantic -Wall -Wextra -Werror
 
 SRC =   ft_atoi.c \
         ft_bzero.c \
@@ -77,22 +73,23 @@ SRC =   ft_atoi.c \
 
 OBJ = $(SRC:.c=.o)
 
+CC = gcc
+
+CFLAGS = -pedantic -Wall -Wextra -Werror
+
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) -c $? $(SRC)
-	@ar rc $(NAME) $? $(OBJ)
-	@ranlib $(NAME)
-	@echo "\033[37mlibrary built, senpai\033[0m"
+$(NAME): $(OBJ)
+		ar rc $(NAME) $(OBJ)
+		ranlib $(NAME)
+
+%.o: %.c $(HEADER)
+		$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	@/bin/rm -f $(OBJ)
-	@echo "\033[37mobj files have been cleaned, senpai\033[0m"
+		rm -f $(OBJ)
 
 fclean: clean
-	@/bin/rm $(NAME)
-	@echo "\033[37mcompiled files have been cleaned, senpai\033[0m"
+		rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
