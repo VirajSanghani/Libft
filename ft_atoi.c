@@ -6,33 +6,36 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:01:05 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 17:24:36 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/02 15:32:42 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *c)
+int		ft_atoi(const char *str)
 {
 	int i;
-	int	sign;
-	int	ans;
+	int nbr;
+	int negative;
 
+	nbr = 0;
+	negative = 0;
 	i = 0;
-	sign = 1;
-	while (c[i] == ' ' || c[i] == '\n' || c[i] == '\t'
-		|| c[i] == '\r' || c[i] == '\v' || c[i] == '\f')
+	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v') ||
+			(str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
 		i++;
-	if (c[i] == '-' || c[i] == '+')
+	if (str[i] == '-')
+		negative = 1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] && (str[i] >= '0') && (str[i] <= '9'))
 	{
-		if (c[i] == '-')
-			sign *= -1;
+		nbr *= 10;
+		nbr += (int)str[i] - '0';
 		i++;
 	}
-	while (ft_isdigit(c[i]))
-	{
-		ans = (ans * 10) + (c[i] - 48);
-		i++;
-	}
-	return (ans * sign);
+	if (negative == 1)
+		return (-nbr);
+	else
+		return (nbr);
 }
