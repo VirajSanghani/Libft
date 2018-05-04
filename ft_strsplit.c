@@ -6,62 +6,73 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 11:10:36 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 11:10:42 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:08:42 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*word_builder(char const *str, char c, unsigned int *index)
+static int		is_del(char c, char ch)
 {
-	unsigned	i;
-	unsigned	start;
-	char		*word;
-
-	while (str[*index] == c && str[*index] != '\0')
-		(*index)++;
-	start = *index;
-	while (str[*index] != c && str[*index] != '\0')
-		(*index)++;
-	word = ft_strnew(*index - start);
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (start < *index)
-	{
-		word[i] = str[start];
-		start++;
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
+	if (c == ch)
+		return (1);
+	return (0);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static int		find_nb_w(char *str, char ch)
 {
-	unsigned	i;
-	unsigned	j;
-	unsigned	words;
-	char		**rtn;
+	int result;
 
-	i = 0;
-	words = 0;
-	while (s[i] != '\0')
+	result = 0;
+	while (*str)
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			words++;
-		i++;
+		while (is_del(*str, ch))
+			str++;
+		if (*str)
+			result++;
+		while (!is_del(*str, ch) && *str)
+			str++;
 	}
-	i = 0;
-	j = 0;
-	rtn = (char**)malloc(sizeof(char*) * (words + 1));
-	if (!rtn)
+	return (result);
+}
+
+static char		**split_func(char *str, int nb_words, int *i, char ch)
+{
+	int		i3;
+	int		word_size;
+	char	**result;
+
+	if (!(result = malloc(sizeof(char*) * (nb_words + 1))))
 		return (NULL);
-	while (i < words)
+	while (i[0] < nb_words)
 	{
-		rtn[i] = word_builder(s, c, &j);
-		i++;
+		while (is_del(str[i[1]], ch))
+			i[1]++;
+		word_size = 0;
+		while (!is_del(str[i[1] + word_size], ch) && str[i[1] + word_size])
+			word_size++;
+		if (!(result[i[0]] = malloc(sizeof(char) * (word_size + 1))))
+			return (NULL);
+		i3 = -1;
+		while (++i3 < word_size)
+			result[i[0]][i3] = str[i[1] + i3];
+		result[i[0]][i3] = '\0';
+		i[1] += word_size;
+		i[0]++;
 	}
-	rtn[i] = 0;
-	return (rtn);
+	result[i[0]] = 0;
+	return (result);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	int i[2];
+
+	if (s && c)
+	{
+		i[0] = 0;
+		i[1] = 0;
+		return (split_func((char*)s, find_nb_w((char*)s, c), i, c));
+	}
+	return (NULL);
 }

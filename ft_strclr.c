@@ -6,7 +6,7 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 14:18:33 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 14:18:45 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:15:56 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_strclr(char *s)
 {
-	ft_memset(s, '\0', ft_strlen(s));
+	if (s != NULL)
+		ft_bzero(s, ft_strlen(s));
 }

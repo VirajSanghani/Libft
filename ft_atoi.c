@@ -6,7 +6,7 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:01:05 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/05/02 15:32:42 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/03 13:47:29 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 int		ft_atoi(const char *str)
 {
-	int i;
-	int nbr;
-	int negative;
+	long int nb;
+	long int sign;
 
-	nbr = 0;
-	negative = 0;
-	i = 0;
-	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v') ||
-			(str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	if (str[i] == '-')
-		negative = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] && (str[i] >= '0') && (str[i] <= '9'))
+	sign = 1;
+	nb = 0;
+	while (*str == ' ' || *str == '\n' || *str == '\v' ||
+				*str == '\t' || *str == '\r' || *str == '\f')
+		++str;
+	if (*str == '-')
 	{
-		nbr *= 10;
-		nbr += (int)str[i] - '0';
-		i++;
+		sign = -1;
+		++str;
 	}
-	if (negative == 1)
-		return (-nbr);
-	else
-		return (nbr);
+	else if (*str == '+')
+		++str;
+	while (*str >= '0' && *str <= '9')
+	{
+		nb = nb * 10;
+		nb = nb + (*str - '0');
+		++str;
+	}
+	return (sign * nb);
 }

@@ -6,7 +6,7 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 14:08:13 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 14:08:31 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:14:59 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	unsigned i;
-
-	i = ft_strlen(s);
-	while (i > 0)
+	if (s != NULL && f != NULL)
 	{
-		i--;
-		f(&s[i]);
+		while (*s)
+			(*f)(s++);
 	}
 }

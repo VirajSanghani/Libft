@@ -6,26 +6,26 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 14:04:05 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 14:04:09 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:25:46 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char				*ft_strmap(char const *s, char (*f)(char))
 {
-	unsigned	i;
-	char		*new;
+	size_t			i;
+	size_t			siz;
+	char			*newstr;
 
-	i = 0;
-	new = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
-	if (!new)
-		return (NULL);
-	while (s[i])
-	{
-		new[i] = f(s[i]);
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
+	if (!s || !f)
+		return (0);
+	siz = ft_strlen(s);
+	newstr = ft_strnew(siz);
+	if (!newstr)
+		return (0);
+	i = -1;
+	while (++i < siz)
+		newstr[i] = f(s[i]);
+	return (newstr);
 }
