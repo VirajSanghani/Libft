@@ -6,7 +6,7 @@
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 14:33:45 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/05/03 13:37:26 by vsanghan         ###   ########.fr       */
+/*   Updated: 2018/05/10 22:45:33 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 int					ft_atoi(const char *c);
 char				*ft_itoa(int n);
+int					ft_factorial(int nb);
+void				ft_swap(int *a, int *b);
+int					ft_power(int nb, int power);
+char				*ft_strlowcase(char *str);
+char				*ft_strupcase(char *str);
 size_t				ft_strlen(const char *s);
 void				ft_strclr(char *s);
 char				*ft_strcpy(char *dst, const char *src);

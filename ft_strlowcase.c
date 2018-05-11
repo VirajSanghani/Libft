@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 13:28:54 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 13:29:03 by vsanghan         ###   ########.fr       */
+/*   Created: 2018/05/10 22:27:24 by vsanghan          #+#    #+#             */
+/*   Updated: 2018/05/10 23:17:50 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t l)
+char	*ft_strlowcase(char *str)
 {
-	size_t		i;
-	size_t		j;
+	int i;
 
 	i = 0;
-	if (big[i] == little[i] && big[i] == '\0')
-		return ((char*)&big[i]);
-	while (big[i] != '\0' && i <= l)
+	while (str[i])
 	{
-		j = i;
-		while (big[j] == little[j - i] && big[j] != '\0' && j < l)
-			j++;
-		if (little[j - i] == '\0')
-		{
-			return ((char*)&big[i]);
-		}
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
 		i++;
 	}
-	return (NULL);
+	return (str);
 }

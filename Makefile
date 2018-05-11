@@ -6,7 +6,7 @@
 #    By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/30 21:31:16 by vsanghan          #+#    #+#              #
-#    Updated: 2018/05/03 13:28:41 by vsanghan         ###   ########.fr        #
+#    Updated: 2018/05/10 22:43:32 by vsanghan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,6 @@ SRCS =	ft_putchar.c \
 		ft_strnstr.c \
 		ft_strcmp.c \
 		ft_strncmp.c \
-		ft_memset.c \
-		ft_bzero.c \
-		ft_memcpy.c \
-		ft_memccpy.c \
-		ft_memmove.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memalloc.c \
-		ft_memdel.c \
 		ft_striter.c \
 		ft_striteri.c \
 		ft_strmap.c \
@@ -66,6 +57,18 @@ SRCS =	ft_putchar.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
 		ft_strsplit.c \
+		ft_strlowcase.c \
+		ft_strupcase.c \
+		ft_swap.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memccpy.c \
+		ft_memmove.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memalloc.c \
+		ft_memdel.c \
 		ft_putendl.c \
 		ft_putnbr.c \
 		ft_putchar_fd.c \
@@ -78,6 +81,8 @@ SRCS =	ft_putchar.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_power.c \
+		ft_factorial.c \
 
 OBJS =	$(SRCS:.c=.o)
 

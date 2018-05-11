@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 13:28:54 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 13:29:03 by vsanghan         ###   ########.fr       */
+/*   Created: 2018/05/10 22:08:51 by vsanghan          #+#    #+#             */
+/*   Updated: 2018/05/10 23:18:41 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t l)
+int	ft_power(int nb, int power)
 {
-	size_t		i;
-	size_t		j;
+	int	i;
 
 	i = 0;
-	if (big[i] == little[i] && big[i] == '\0')
-		return ((char*)&big[i]);
-	while (big[i] != '\0' && i <= l)
+	if (power < 0)
 	{
-		j = i;
-		while (big[j] == little[j - i] && big[j] != '\0' && j < l)
-			j++;
-		if (little[j - i] == '\0')
-		{
-			return ((char*)&big[i]);
-		}
-		i++;
+		return (0);
 	}
-	return (NULL);
+	while (power > 0)
+	{
+		i = i * nb;
+		power--;
+	}
+	return (nb);
 }

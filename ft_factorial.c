@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsanghan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 13:28:54 by vsanghan          #+#    #+#             */
-/*   Updated: 2018/04/30 13:29:03 by vsanghan         ###   ########.fr       */
+/*   Created: 2018/05/10 22:00:53 by vsanghan          #+#    #+#             */
+/*   Updated: 2018/05/10 23:18:08 by vsanghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t l)
+int		ft_factorial(int nb)
 {
-	size_t		i;
-	size_t		j;
+	int result;
 
-	i = 0;
-	if (big[i] == little[i] && big[i] == '\0')
-		return ((char*)&big[i]);
-	while (big[i] != '\0' && i <= l)
+	if (nb > 12 || nb < 0)
+		return (0);
+	result = 1;
+	while (nb > 0)
 	{
-		j = i;
-		while (big[j] == little[j - i] && big[j] != '\0' && j < l)
-			j++;
-		if (little[j - i] == '\0')
-		{
-			return ((char*)&big[i]);
-		}
-		i++;
+		result = result * nb;
+		nb--;
 	}
-	return (NULL);
+	return (result);
 }
